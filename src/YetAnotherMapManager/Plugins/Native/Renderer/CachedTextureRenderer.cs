@@ -1,0 +1,38 @@
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using YetAnotherMapManager.Core;
+
+#nullable disable
+namespace YetAnotherMapManager.Plugins.Native.Renderer;
+
+public class CachedTextureRenderer : TextureRenderer, ICachedRenderer
+{
+  private Dictionary<Rectangle, Bitmap> cache;
+
+  public CachedTextureRenderer() => this.cache = new Dictionary<Rectangle, Bitmap>();
+
+  public void InvalidateCache() => this.cache.Clear();
+
+  public void InvalidateCache(Rectangle rectangle) => this.cache.Remove(rectangle);
+
+  public override void SetColorMap(Settings settings)
+  {
+    base.SetColorMap(settings);
+    this.InvalidateCache();
+  }
+
+  public override Bitmap GetRenderedArea(int originX, int originY, int width, int height)
+  {
+    Rectangle key = new Rectangle(originX, originY, width, height);
+    Bitmap renderedArea;
+    if (!this.cache.Keys.Contains<Rectangle>(key))
+    {
+      renderedArea = base.GetRenderedArea(originX, originY, width, height);
+      this.cache[key] = renderedArea;
+    }
+    else
+      renderedArea = this.cache[key];
+    return renderedArea;
+  }
+}

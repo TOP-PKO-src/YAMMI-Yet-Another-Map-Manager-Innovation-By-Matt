@@ -1,0 +1,64 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YetAnotherMapManager", "src\YetAnotherMapManager\YetAnotherMapManager.csproj", "{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AreaManager", "src\Plugins\AreaManager\AreaManager.csproj", "{A607203E-5CA0-4D6B-BBC8-D0B70B075A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTextureBlending", "src\Plugins\AutoTextureBlending\AutoTextureBlending.csproj", "{B577A7D1-C2A0-486F-90FF-415C53F05DCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeightMapGeneratorPlugin", "src\Plugins\HeightMapGeneratorPlugin\HeightMapGeneratorPlugin.csproj", "{5ED902A2-72D6-4319-9305-50A99F223D99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsleGenerator", "src\Plugins\IsleGenerator\IsleGenerator.csproj", "{5E1315D2-7670-4E54-B4F9-4D872236D99F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextureAutoAssign", "src\Plugins\TextureAutoAssign\TextureAutoAssign.csproj", "{703A3094-C59A-42D3-8517-1337C2660756}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextureTweaker", "src\Plugins\TextureTweaker\TextureTweaker.csproj", "{5AAD0A17-723D-4BE2-8425-3709FC6F858D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TileInfoView", "src\Plugins\TileInfoView\TileInfoView.csproj", "{80B8EF46-CF37-4DD3-9347-F95559D37930}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A607203E-5CA0-4D6B-BBC8-D0B70B075A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A607203E-5CA0-4D6B-BBC8-D0B70B075A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A607203E-5CA0-4D6B-BBC8-D0B70B075A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A607203E-5CA0-4D6B-BBC8-D0B70B075A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B577A7D1-C2A0-486F-90FF-415C53F05DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B577A7D1-C2A0-486F-90FF-415C53F05DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B577A7D1-C2A0-486F-90FF-415C53F05DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B577A7D1-C2A0-486F-90FF-415C53F05DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ED902A2-72D6-4319-9305-50A99F223D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ED902A2-72D6-4319-9305-50A99F223D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ED902A2-72D6-4319-9305-50A99F223D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ED902A2-72D6-4319-9305-50A99F223D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1315D2-7670-4E54-B4F9-4D872236D99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1315D2-7670-4E54-B4F9-4D872236D99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1315D2-7670-4E54-B4F9-4D872236D99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1315D2-7670-4E54-B4F9-4D872236D99F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703A3094-C59A-42D3-8517-1337C2660756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703A3094-C59A-42D3-8517-1337C2660756}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703A3094-C59A-42D3-8517-1337C2660756}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703A3094-C59A-42D3-8517-1337C2660756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAD0A17-723D-4BE2-8425-3709FC6F858D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAD0A17-723D-4BE2-8425-3709FC6F858D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAD0A17-723D-4BE2-8425-3709FC6F858D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAD0A17-723D-4BE2-8425-3709FC6F858D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B8EF46-CF37-4DD3-9347-F95559D37930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B8EF46-CF37-4DD3-9347-F95559D37930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B8EF46-CF37-4DD3-9347-F95559D37930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B8EF46-CF37-4DD3-9347-F95559D37930}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: YetAnotherMapManager.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3EEFAD2-E5DA-4651-A026-4EA3AC339793}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>YetAnotherMapManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>YetAnotherMapManager</RootNamespace>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainForm.cs" />
+    <Compile Include="TextureToolStripItem.cs" />
+    <Compile Include="AreaToolStripItem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Common\UShortArray_2D.cs" />
+    <Compile Include="Common\BitArray_2D.cs" />
+    <Compile Include="Common\ByteArray_2D.cs" />
+    <Compile Include="Common\TwoBitArray_2D.cs" />
+    <Compile Include="Common\SByteArray_2D.cs" />
+    <Compile Include="Core\ApplicationControler.cs" />
+    <Compile Include="Core\SettingsSerializer.cs" />
+    <Compile Include="Core\Settings.cs" />
+    <Compile Include="Core\Test.cs" />
+    <Compile Include="Core\TextureDef.cs" />
+    <Compile Include="Core\AreaDef.cs" />
+    <Compile Include="Core\Security\Serializer.cs" />
+    <Compile Include="Core\Security\AesSerializer.cs" />
+    <Compile Include="Core\Security\License.cs" />
+    <Compile Include="Core\Security\HardIdGenerator.cs" />
+    <Compile Include="Core\Security\LicenseKeyValidator.cs" />
+    <Compile Include="Core\Security\RsaSerializer.cs" />
+    <Compile Include="Debug\PerfTimer.cs" />
+    <Compile Include="Debug\Recorder.cs" />
+    <Compile Include="MapData\MapInfo.cs" />
+    <Compile Include="MapData\MapInfoSerializer.cs" />
+    <Compile Include="MapData\PkoNative\BinFileConvertor.cs" />
+    <Compile Include="MapData\PkoNative\PkoMapConvertor.cs" />
+    <Compile Include="MapData\PkoNative\_mapProperties.cs" />
+    <Compile Include="MapData\PkoNative\Tile.cs" />
+    <Compile Include="Plugins\ICachedRenderer.cs" />
+    <Compile Include="Plugins\IMapData.cs" />
+    <Compile Include="Plugins\IRenderer.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Data\AreaMapData.cs" />
+    <Compile Include="Plugins\Native\Data\ColorMapData.cs" />
+    <Compile Include="Plugins\Native\Data\TextureBlendingMapData.cs" />
+    <Compile Include="Plugins\Native\Data\HeightMapSpotData.cs" />
+    <Compile Include="Plugins\Native\Data\SolidHeightMapData.cs" />
+    <Compile Include="Plugins\Native\Data\SafeZoneMapData.cs" />
+    <Compile Include="Plugins\Native\Data\PvpMapData.cs" />
+    <Compile Include="Plugins\Native\Data\TextureMapData.cs" />
+    <Compile Include="Plugins\Native\Data\SeaLandMapData.cs" />
+    <Compile Include="Plugins\Native\Data\SolidMapData.cs" />
+    <Compile Include="Plugins\Native\Data\HeightMapData.cs" />
+    <Compile Include="Plugins\Native\Drawing\PvpDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\LightColorDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\HeightSpotDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\TextureDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\SafeDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\SeaLandDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\SolidDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Drawing\AreaDrawingTool.cs" />
+    <Compile Include="Plugins\Native\Renderer\SeaLandRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedSeaLandRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\SolidRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedSolidRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\HeightRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedHeightRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\TextureRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedTextureRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\AreaRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedAreaRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\PvpRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedPvpRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\SafeZoneRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\CachedSafeZoneRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\ColorRenderer.cs" />
+    <Compile Include="Plugins\Native\Renderer\HeightSpotRenderer.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Rendering\DoubleBufferedPanel.cs" />
+    <Compile Include="Rendering\FastBitmap.cs" />
+    <Compile Include="Rendering\PixelData.cs" />
+    <Compile Include="Rendering\LayerRenderer.cs" />
+    <Compile Include="Rendering\MapRenderer.cs" />
+    <Compile Include="Rendering\MouseOnMapEventArgs.cs" />
+    <Compile Include="Rendering\SubTilePoint.cs" />
+    <Compile Include="Rendering\ToolBar.cs" />
+    <Compile Include="UI\CropMapInputForm.cs" />
+    <Compile Include="UI\Layer.cs" />
+    <Compile Include="UI\SettingsChangedEventArgs.cs" />
+    <Compile Include="UI\LayerSelector.cs" />
+    <Compile Include="UI\LicenseKeyDialog.cs" />
+    <Compile Include="UI\NewMapInputForm.cs" />
+    <Compile Include="UI\PictureComboBox.cs" />
+    <Compile Include="UI\PictureComboBoxItem.cs" />
+    <Compile Include="UI\ImportMapPartInputForm.cs" />
+    <Compile Include="UI\StackedPanelContainer.cs" />
+    <Compile Include="UI\TextureSettings.cs" />
+    <Compile Include="UI\TextureView.cs" />
+    <Compile Include="UI\TextureSettingsChangedEventArgs.cs" />
+    <Compile Include="UI\ToolFrame.cs" />
+    <Compile Include="UI\AreaView.cs" />
+    <Compile Include="UI\AreaSettingsChangedEventArgs.cs" />
+    <Compile Include="UI\AreaSettings.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainForm.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Rendering\MapRenderer.resx" />
+    <EmbeddedResource Include="Rendering\ToolBar.resx" />
+    <EmbeddedResource Include="UI\AreaSettings.resx" />
+    <EmbeddedResource Include="UI\AreaView.resx" />
+    <EmbeddedResource Include="UI\CropMapInputForm.resx" />
+    <EmbeddedResource Include="UI\ImportMapPartInputForm.resx" />
+    <EmbeddedResource Include="UI\Layer.resx" />
+    <EmbeddedResource Include="UI\LayerSelector.resx" />
+    <EmbeddedResource Include="UI\LicenseKeyDialog.resx" />
+    <EmbeddedResource Include="UI\NewMapInputForm.resx" />
+    <EmbeddedResource Include="UI\StackedPanelContainer.resx" />
+    <EmbeddedResource Include="UI\TextureSettings.resx" />
+    <EmbeddedResource Include="UI\TextureView.resx" />
+    <EmbeddedResource Include="UI\ToolFrame.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

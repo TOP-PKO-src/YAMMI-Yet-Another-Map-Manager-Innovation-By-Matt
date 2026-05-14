@@ -1,0 +1,51 @@
+# Yammi Notes
+
+- 
+- Use Visual Studio MSBuild, not `dotnet msbuild`, for normal validation.
+- Plugin projects copy output into `YetAnotherMapManager\bin\Debug\Plugins`.
+- This source appears decompiled. Expect namespace/class collisions, missing framework references, and old generated-code quirks.
+- Runtime validation now has a known-good client folder: `C:\Tales of Pirates`.
+- Yammi startup is settings-gated. Without `settings.xml`, `ApplicationControler.LoadApplicationSettings()` prompts for a game client and returns false if the user declines or cancels. For automated smoke tests, call `ApplicationControler.LoadApplicationSettings("C:\Tales of Pirates")` from the output directory first.
+- `C:\Tales of Pirates` provides the old-format files Yammi expects: `scripts\table\TerrainInfo.bin`, `scripts\table\AreaSet.bin`, and `map\*.map`.
+- PowerShell `Add-Type -Path` cannot load the compiled `.exe`; use `[System.Reflection.Assembly]::LoadFile(...)` for reflection harnesses.
+- Plugin loading has two useful validation levels:
+  - `GetPlugins()` proves DLL discovery and instantiation; current count is 7.
+  - `ApplicationControler.Init()` proves registration; current plugin menu entry points are 5 because `TextureAutoAssign` initializes but does not register an entry point, and `TileInfoView` registers the `Map Info` view.
+- `hell4.map` is a useful small smoke map: source size 125,844 bytes, loads as `128x128`, and exports/reloads successfully. Yammi's exported `.map` was larger than the source in this smoke (`246,804` bytes), so byte-identical round-trip parity is not established.
+- The output folder currently contains generated runtime artifacts (`settings.xml`, cache textures, and `validation-output\yammi-smoke-2026-05-13\hell4-export.map`). These are validation artifacts, not source repairs.
+- Deep audit result: startup and plugin initialization are in better shape than map export parity.
+- PKO reference source confirms Yammi's native tile field order is basically correct, so the round-trip failure is not a random struct-layout issue.
+- The first hard export bug is explicit in source: `PkoMapConvertor.WriteMap` rewrites texture id `0` to fallback values (`3` for land/bridge, `50` for sea). That guarantees texture mismatches on legitimate `0` tiles.
+- The second export bug is structural: Yammi always writes offsets for every section. Native loaders treat offset `0` as an absent/sparse section, so Yammi exports inflate file size and discard source sparsity.
+- Runtime quirk: `LoadApplicationSettings(clientPath)` is not idempotent within one process because it re-extracts cached terrain BMPs and collides with already-open bitmap handles.
+- Direct serializer validation is cleaner than going through `ApplicationControler` when testing `.map` round-trips. It avoids settings/bootstrap noise and isolates `PkoMapConvertor.LoadMap/WriteMap`.
+- The texture-id corruption was exactly the export-side fallback in `WriteMap`. Removing that mutation was enough to clear all tested data-layer mismatches on real TOP maps.
+- Current native export status:
+  - data parity after reload: good on the tested batch
+  - byte/file-size parity: fixed for the tested imported PKO maps after preserving sparse masks and original section offsets
+- The temporary validator under `validation-output\yammi-texture0fix-2026-05-13` is a disposable test artifact, not part of the source fix.
+- Stronger native parity needed more than a sparse/not-sparse mask. `garner.map` showed that original source offsets can include preserved gaps, so exact structural parity requires retaining the original offset table and source file length.
+- `MapInfo` now carries native section metadata for imported PKO maps:
+  - section width/height
+  - section presence
+  - original section offsets
+  - original source file length
+- Current warning count breakdown:
+  - previous state was 8 unused caught exception variables, 18 decompiled WinForms `components` fields, 2 unused private fields, and 1 assigned-but-unused plugin field
+  - current state is `0 warnings`, `0 errors`
+- Initializing the decompiled `components` fields is enough to quiet CS0649 without changing runtime behavior. That was the lowest-risk way to make the build clean.
+- Current validated state:
+  - solution build: clean
+  - native `.map` parity on tested TOP maps: clean
+  - GUI startup smoke: clean
+- GUI workflow automation harness was useful for validation but has been removed from the upload-ready tree.
+- The earlier note that `hell4.map` exported larger during smoke is superseded for the native edit path. When edits stay inside an already-present sparse section, the GUI-path edited export stayed `125,844` bytes, matching the source file size.
+- Editing a tile in an absent sparse section legitimately materializes a new native section and grows the file by one section payload. That is expected behavior, not the same as the old serializer corruption.
+- GUI workflow proof currently covers automated WinForms/application code paths, not visual human inspection of every control layout. It proves startup, plugin registration, modal entrypoint smoke, draw-tool mutation, app export, reload, and native field persistence.
+- `TextureAutoAssign` is plugin-load only in this decompiled source. Its `TextureAutoAssignEntryPoint` exists but is never registered, so there is no menu action to validate without changing behavior.
+- Organization assessment:
+  - Keep `Yammi.sln` as the canonical build entry.
+  - Treat per-project `.sln` files as decompiler/export leftovers unless a specific plugin-only workflow needs them.
+  - The current folder layout is acceptable for stabilization; do not do a broad `src/` migration until runtime behavior is fully understood.
+  - Rework priority should be artifact hygiene first: ignore/move generated `bin`, `obj`, `cache`, root `settings.xml`, and disposable validation outputs.
+  - Next structural concern is plugin clarity, especially `TextureAutoAssign`, which currently looks like an incomplete or mis-exported plugin.
