@@ -1,6 +1,16 @@
+Credits
+Original Author
+
+This project is based on the original work created by Matt (Elitrin).
+
+Matt/Elitrin is the original creator of YAMMI and has contributed several other valuable tools widely used within the TOP/PKO community. 
+
+
 # Yammi 0.6.2 Source
 
 Yammi is an old WinForms Tales of Pirates / PKO map editor. This tree was recovered from dotPeek output and is being stabilized as a buildable source project.
+
+This repository is intended as a base for further improvements and is shared as a way of giving back to the community.
 
 ## Layout
 
@@ -32,13 +42,3 @@ The validated client folder is:
 ```text
 C:\Tales of Pirates
 ```
-
-## Upload Hygiene
-
-Do not commit generated runtime/build files:
-
-- `bin/`
-- `obj/`
-- `settings.xml`
-- `cache/`
-- local validation outputs
